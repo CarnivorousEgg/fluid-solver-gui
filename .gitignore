@@ -28,8 +28,3 @@ Thumbs.db
 *.zip
 
 # Build artifacts
-
-# Archived files
-archive/
-dist.zip
-SolverGUI.spec
