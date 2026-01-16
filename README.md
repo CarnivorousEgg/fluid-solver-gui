@@ -52,6 +52,7 @@ Complete documentation is organized in the `docs/` folder:
 | [Build Guide](docs/BUILD.md) | Creating executables with PyInstaller |
 | [Customization](docs/CUSTOMIZATION.md) | Quick customization reference |
 | [Code Structure](docs/CODE_STRUCTURE.md) | Codebase architecture and organization |
+| [C Integration](docs/C_INTEGRATION.md) | Adding C programs for pre/post processing |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and solutions |
 
 ---
