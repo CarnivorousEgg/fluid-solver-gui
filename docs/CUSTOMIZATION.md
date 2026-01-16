@@ -3,13 +3,13 @@
 ## Most Common Changes
 
 ### 1. Change Window Title
-**File**: `trial.py`, Line ~46
+**File**: `main.py`, Line 42
 ```python
 self.setWindowTitle("Your New Title Here")
 ```
 
 ### 2. Change Button Colors
-**File**: `trial.py`, Lines ~54-67
+**File**: `utils/styles.py`, Lines 15-25
 ```python
 QPushButton { 
     background-color: #YOUR_COLOR;  # e.g., #ff0000 for red
@@ -20,20 +20,20 @@ QPushButton {
 ### 3. Change Default Values
 
 #### Solver Defaults
-**File**: `trial.py`, Lines ~255-270
+**File**: `tabs/solver_tab.py`, Lines 90-95
 ```python
 self.solver_widgets['time_step'] = QDoubleSpinBox(value=0.01)  # Change 0.01
 self.solver_widgets['max_steps'] = QSpinBox(value=10)          # Change 10
 ```
 
 #### Physical Properties
-**File**: `trial.py`, Lines ~310-320
+**File**: `tabs/physical_tab.py`, Lines 35-40
 ```python
 add_param("Fluid density:", "rho", 1000, 0, 0)  # Change 1000
 ```
 
 ### 4. Add New Equation Type
-**File**: `trial.py`, Lines ~226-230
+**File**: `tabs/solver_tab.py`, Lines 35-40
 ```python
 self.solver_widgets['fluid_eqn'] = self._combo([
     "Incompressible Navier-Stokes", 
@@ -45,9 +45,9 @@ self.solver_widgets['fluid_eqn'] = self._combo([
 ```
 
 ### 5. Change Tab Names
-**File**: `trial.py`, Lines ~103-108
+**File**: `main.py`, Lines 78-83
 ```python
-self.tabs.addTab(self.create_geometry_tab(), "New Name")  # Change "New Name"
+self.tabs.addTab(self.geometry_tab, "New Name")  # Change "New Name"
 ```
 
 ## Color Palette
@@ -94,14 +94,14 @@ chmod +x build_exe.sh
 
 ### Manual
 ```bash
-pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
+pyinstaller --clean --onefile --windowed --name "SolverGUI" main.py
 ```
 
 ## File Locations
 
 | Item | Location |
 |------|----------|
-| Main code | `trial.py` |
+| Main code | `main.py` |
 | Windows build script | `build_exe.bat` |
 | Linux/Mac build script | `build_exe.sh` |
 | Output executable | `dist/SolverGUI.exe` (or `dist/SolverGUI`) |
@@ -122,8 +122,8 @@ pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
 
 ## Testing Workflow
 
-1. Edit `trial.py`
-2. Run: `python trial.py`
+1. Edit `main.py`
+2. Run: `python main.py`
 3. Test changes
 4. If good, rebuild: `build_exe.bat` (or `.sh`)
 5. Test `dist/SolverGUI.exe`
@@ -132,7 +132,7 @@ pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
 ## Tips
 
 - **Search for text**: Use Ctrl+F to find specific strings to change
-- **Backup first**: Copy `trial.py` before major changes
+- **Backup first**: Copy `main.py` before major changes
 - **Test incrementally**: Make one change at a time
 - **Check console**: Run from terminal to see error messages
 - **Line numbers**: Enable in your editor to find sections quickly
@@ -140,6 +140,6 @@ pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
 ## Getting Help
 
 1. Check `README.md` for detailed guide
-2. Look at inline comments in `trial.py`
+2. Look at inline comments in `main.py`
 3. Search for examples in the code (most patterns repeat)
 4. PySide6 docs: https://doc.qt.io/qtforpython/

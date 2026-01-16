@@ -101,7 +101,12 @@ python main.py
 
 **Problem**: Stylesheet not loading
 
-**Solution 1**: Check `trial.py` lines 54-67 are not commented out
+**Solution 1**: Check `utils/styles.py` is imported in `main.py`:
+```python
+from utils.styles import get_stylesheet
+# ...
+self.setStyleSheet(get_stylesheet())
+```
 
 **Solution 2**: If using modular version, verify `utils/styles.py` exists:
 ```powershell
@@ -115,7 +120,7 @@ python -c "from utils.styles import get_stylesheet; print(len(get_stylesheet()))
 
 **Problem**: Code modified incorrectly
 
-**Solution**: Check `trial.py` line 46:
+**Solution**: Check `main.py` line 46:
 ```python
 self.showMaximized()  # Correct
 # NOT self.resize(1250, 850)
@@ -314,7 +319,7 @@ touch tabs/__init__.py
 
 **Problem**: Old version of code
 
-**Solution**: Update to latest `trial.py` - should have `_refresh_bc_labels()` method around line 629.
+**Solution**: Update to latest code - `tabs/boundary_tab.py` should have `_refresh_bc_labels()` method.
 
 ---
 
@@ -322,7 +327,7 @@ touch tabs/__init__.py
 
 **Problem**: Old version missing acoustic support
 
-**Solution**: Check `trial.py` line 182 - should have "LPCE" in combo box options.
+**Solution**: Check `tabs/solver_tab.py` line 46 - should have "LPCE" in combo box options.
 
 ---
 
@@ -330,7 +335,7 @@ touch tabs/__init__.py
 
 **Problem**: Old version without psi support
 
-**Solution**: Check `trial.py` line 493 - should create `init_cond_widgets['psi']`.
+**Solution**: Check `tabs/boundary_tab.py` initialization - should create `init_cond_widgets['psi']`.
 
 ---
 

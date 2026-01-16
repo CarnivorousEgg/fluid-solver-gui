@@ -90,7 +90,7 @@ pyinstaller --onefile --windowed --name "SolverGUI" main.py
 
 ```bash
 # Build executable
-pyinstaller --onefile --windowed --name "SolverGUI" trial.py
+pyinstaller --onefile --windowed --name "SolverGUI" main.py
 
 # Create .app bundle (optional)
 pyinstaller --onefile --windowed --name "SolverGUI" --osx-bundle-identifier com.solver.gui main.py
@@ -129,9 +129,9 @@ COLORS = {
 }
 ```
 
-**Method 2: Edit trial.py directly** (If not using modular structure)
+**Method 2: Edit main.py directly** (If not using modular structure)
 
-Edit the stylesheet in `trial.py` (lines 54-67):
+Edit the stylesheet in `main.py` (lines 54-67):
 
 ```python
 self.setStyleSheet("""
@@ -262,7 +262,7 @@ fluidEqn = navierStokes
 ```
 solver-gui/
 ├── main.py                  # Application entry point ⭐ RUN THIS
-├── trial.py                 # Complete application code (monolithic)
+├── main.py                 # Complete application code (monolithic)
 ├── trial_backup.py          # Backup of original code
 │
 ├── tabs/                    # Tab modules (modular structure)
@@ -346,7 +346,7 @@ rm -rf build dist    # Linux/macOS
 
 # Rebuild
 pip install --upgrade pyinstaller
-pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
+pyinstaller --clean --onefile --windowed --name "SolverGUI" main.py
 ```
 
 ### Executable Too Large
@@ -357,14 +357,14 @@ pyinstaller --clean --onefile --windowed --name "SolverGUI" trial.py
 ```bash
 # Use UPX compression (optional)
 pip install pyinstaller[upx]
-pyinstaller --onefile --windowed --name "SolverGUI" --upx-dir=/path/to/upx trial.py
+pyinstaller --onefile --windowed --name "SolverGUI" --upx-dir=/path/to/upx main.py
 ```
 
 ### GUI Looks Different on Linux/macOS
 
 **Issue**: Fonts or colors don't match Windows
 
-**Solution**: Update the stylesheet font-family in `trial.py`:
+**Solution**: Update the stylesheet font-family in `main.py`:
 ```python
 # For cross-platform compatibility
 font-family: Arial, sans-serif;  # Instead of 'Segoe UI'
@@ -382,8 +382,8 @@ font-family: Arial, sans-serif;  # Instead of 'Segoe UI'
 
 ### Testing Changes
 
-1. Edit `trial.py`
-2. Run directly: `python trial.py`
+1. Edit `main.py`
+2. Run directly: `python main.py`
 3. Test functionality
 4. If satisfied, rebuild: `build_exe.bat`
 
@@ -428,7 +428,7 @@ This project is open-source. Feel free to modify and distribute.
 
 For issues or questions:
 1. Check the [Troubleshooting](#troubleshooting) section
-2. Review inline code comments in `trial.py`
+2. Review inline code comments in `main.py`
 3. Consult PySide6 documentation: https://doc.qt.io/qtforpython/
 
 ---

@@ -53,12 +53,12 @@ Complete documentation is organized in the `docs/` folder:
 | [Customization](docs/CUSTOMIZATION.md) | Quick customization reference |
 | [Code Structure](docs/CODE_STRUCTURE.md) | Codebase architecture and organization |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and solutions |
-| [Contributing](docs/CONTRIBUTING.md) | How to contribute to the project |
 
 ---
 
-## Features
+## Features & Workflow
 
+### Features
 - **6 Configuration Tabs**: Geometry, Solver, Physical Properties, Boundary Conditions, Prescribed Conditions, Output Data
 - **Fluid Equations**: Incompressible/Compressible Navier-Stokes, Stokes, Euler
 - **Acoustic Support**: LPCE equation with NRBC parameters, acoustic potential boundary conditions
@@ -66,17 +66,14 @@ Complete documentation is organized in the `docs/` folder:
 - **Dynamic UI**: Add/remove boundary conditions, prescribed conditions, and output fields
 - **File Generation**: Creates formatted input files for simulation software
 
----
-
-## Basic Workflow
-
+### Basic Workflow
 1. **Geometry Tab**: Specify mesh files (coordinates, connectivity, boundaries)
 2. **Solver Tab**: Choose equation type, set time stepping and convergence parameters
 3. **Physical Properties Tab**: Define material properties (density, viscosity, etc.)
 4. **Boundary Conditions Tab**: Assign boundary types and values
 5. **Prescribed Conditions Tab**: Set time-varying conditions (optional)
 6. **Output Tab**: Select fields to output
-7. **Save**: Click "Save Input File" button
+7. **Save**: Click "Complete the pre-processing" button
 
 ---
 
@@ -100,10 +97,17 @@ See [requirements.txt](requirements.txt) for full list.
 
 ```
 solver-gui/
-├── main.py                  # Entry point
-├── trial.py                 # Main application
-├── utils/                   # Utilities (styling, helpers)
+├── main.py                  # Main application entry point
 ├── tabs/                    # Tab modules (modular structure)
+│   ├── geometry_tab.py      # Geometry configuration
+│   ├── solver_tab.py        # Solver settings
+│   ├── physical_tab.py      # Physical properties
+│   ├── boundary_tab.py      # Boundary conditions
+│   ├── prescribed_tab.py    # Prescribed conditions
+│   └── output_tab.py        # Output configuration
+├── utils/                   # Utilities (styling, helpers)
+│   ├── styles.py            # Centralized styling
+│   └── helpers.py           # Helper functions
 ├── docs/                    # Documentation
 ├── build_exe.bat            # Windows build script
 ├── build_exe.sh             # Linux/macOS build script
@@ -112,22 +116,18 @@ solver-gui/
 
 ---
 
-## License
-
-*(Add license information here)*
-
----
-
 ## Support
 
-For issues, questions, or contributions:
+For issues or questions:
 - See [Troubleshooting Guide](docs/TROUBLESHOOTING.md)
-- See [Contributing Guide](docs/CONTRIBUTING.md)
+- See [Usage Guide](docs/USAGE.md)
 - Open an issue on GitHub
 
 ---
 
 ## Acknowledgments
+
+Thank you to **Vaibhav Joshi Sir** for allowing me to contribute to this side project.
 
 Developed for fluid-acoustic coupled simulations with support for structural analysis.
 

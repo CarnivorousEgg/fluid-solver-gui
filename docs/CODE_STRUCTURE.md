@@ -11,12 +11,15 @@ The application is organized into modular components for easy maintenance.
 ```
 solver-gui/
 │
-├── main.py                  # Entry point
-├── trial.py                 # Complete application (monolithic)
-├── trial_backup.py          # Original backup
+├── main.py                  # Main application entry point
 │
 ├── tabs/                    # Tab modules (modular)
 │   ├── geometry_tab.py      # Geometry configuration
+│   ├── solver_tab.py        # Solver settings
+│   ├── physical_tab.py      # Physical properties
+│   ├── boundary_tab.py      # Boundary conditions
+│   ├── prescribed_tab.py    # Prescribed conditions
+│   ├── output_tab.py        # Output configuration
 │   └── __init__.py
 │
 ├── utils/                   # Shared utilities
@@ -33,51 +36,25 @@ solver-gui/
 ## Main Components
 
 ### main.py
-**Purpose**: Application entry point
+**Purpose**: Main application entry point and coordinator
 
 ```python
-from trial import SolverGUI  # Import main class
-app = QApplication(sys.argv)
-window = SolverGUI()
-window.show()
-```
+from tabs.geometry_tab import GeometryTab
+from tabs.solver_tab import SolverTab
+# ... other imports
 
-**Customization**: Change window, tabs, or imports here
-
----
-
-### trial.py
-**Purpose**: Complete application code
-
-**Structure**:
-```python
 class SolverGUI(QWidget):
-    def __init__():           # Initialize window, styling
-    def init_ui():            # Create tabs and layout
+    def __init__(self):
+        # Initialize all tab modules
+        self.geometry_tab = GeometryTab(self)
+        self.solver_tab = SolverTab(self)
+        # ...
     
-    # Tab creation methods
-    def create_geometry_tab()
-    def create_solver_tab()
-    def create_physical_tab()
-    def create_boundary_tab()
-    def create_prescribed_tab()
-    def create_output_tab()
-    
-    # Helper methods
-    def add_geometry_row()
-    def add_bc_row()
-    def calculate_nondim()
-    
-    # File generation
-    def save_input_file()
+    def save_input_file(self):
+        # Collect data from all tabs and generate output
 ```
 
-**Key Sections**:
-- Lines 1-40: Imports and documentation
-- Lines 40-80: Styling (`setStyleSheet`)
-- Lines 80-120: Init and data storage
-- Lines 120-240: Geometry tab
-- Lines 240-390: Solver tab
+**Customization**: Main window settings, tab assembly
 - Lines 390-475: Physical properties tab
 - Lines 475-650: Boundary conditions tab
 - Lines 650-720: Prescribed conditions tab
@@ -339,7 +316,7 @@ def create_solver_tab(self):
 
 ## Testing Changes
 
-1. Edit `trial.py`
+1. Edit tab files in `tabs/` directory or `utils/` for styling
 2. Run: `python main.py`
 3. Test functionality
 4. If good, rebuild: `build_exe.bat`

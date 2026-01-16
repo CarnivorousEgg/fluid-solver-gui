@@ -281,7 +281,7 @@ pyinstaller --onefile --windowed \
 
 Or edit in code:
 ```python
-# In main.py or trial.py
+# In main.py or main.py
 __version__ = "2.0.0"
 self.setWindowTitle(f"Solver GUI v{__version__}")
 ```
